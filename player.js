@@ -20,7 +20,7 @@ class Player {
   // Moving up the player
 
   moveUp() {
-    if (this.top > 0) {
+    if (this.top > -this.height) {
       this.top -= 10;
     }
   }
