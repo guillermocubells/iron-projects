@@ -1,4 +1,4 @@
-let birdImg = []; // Array of images to choose from
+let birdImg; // Creating a variable to storeimages
 
 const player = document.querySelector(".player span");
 

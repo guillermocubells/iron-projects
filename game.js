@@ -1,8 +1,7 @@
 class Game {
   constructor() {
     this.player = new Player();
-    this.rocks = [];
-    // this.bird = new Birds();
+    // this.birds = new Birds([]);
     this.birds = [];
     this.background = new Background();
   }
@@ -10,15 +9,20 @@ class Game {
   preload() {
     this.player.preload();
     this.background.preload();
-    // this.bird.preload();
+    birdImg = loadImage("./ice-assets/Articbird0.png");
+    // --> Loading multiple images of an array maybe
+    // for (let i = 0; i < 2; i++) {
+    //     birdImg[i] = loadImage("./ice-assets/Articbird" + i + ".png");
+    //   //   // console.log(birdImg[i])
+    //   }
   }
 
   play() {
     this.background.drawBackground();
     this.player.drawPlayer();
     // this.birds.drawBird();
-    if (frameCount % 20 === 0) {
-      this.birds.push(new Birds());
+    if (frameCount % 30 === 0) {
+      this.birds.push(new Birds(birdImg));
     }
     this.birds = this.birds.filter((bird) => {
       bird.drawBird();
