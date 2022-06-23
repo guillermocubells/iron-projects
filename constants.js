@@ -1,6 +1,6 @@
-let birdImg; // Creating a variable to storeimages
-
-const player = document.querySelector(".player span");
+let birdImg = []; // Creating a variable to storeimages
+// let randImg;
+const playerLife = document.querySelector(".playerLife span");
 
 const ARROW_RIGHT = 39;
 const ARROW_DOWN = 40;
