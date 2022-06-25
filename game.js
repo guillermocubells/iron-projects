@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.player = new Player(545, 75, playerLife);
+    this.player = new Player(545, 75, playerLife, playerDeath, playerWin);
     this.birds = [];
     this.background = new Background();
   }
@@ -8,13 +8,9 @@ class Game {
   preload() {
     this.player.preload();
     this.background.preload();
-    // birdImg = loadImage("./ice-assets/Articbird0.png");
-    // --> Loading multiple images of an array maybe for later
-    for (let i = 0; i < 2; i++) {
-        birdImg[i] = loadImage("./ice-assets/Articbird" + i + ".png");
-        birdImg[i]
-    //   console.log(birdImg[i])
-      }
+    birdImg = loadImage("./ice-assets/Articbird0.png");
+    birdImg2 = loadImage("./ice-assets/Articbird1.png");
+    birdImg3 = loadImage("./ice-assets/Articbird2.png");
   }
 
   play() {
@@ -27,14 +23,16 @@ class Game {
     this.player.moveLeft();
 
     // Creates a bird every half of a second
-    if (frameCount % 20 === 0) {
-      this.birds.push(new Birds(birdImg));
-      //   console.log(this.birds) --> its pushing birds in the array and its removing them when they are of canvas
+    if (frameCount % 30 === 0) {
+      let randImg = random([birdImg, birdImg2, birdImg3]);
+      this.birds.push(new Birds(randImg));
+      //console.log(this.birds) //its pushing birds in the array and its removing them when they are of canvas
     }
 
     // Draws each of the birds in the array
     this.birds.forEach((bird) => {
       bird.drawBird();
+      //   console.log(this.bird)
 
       // Removes every bird that is no longer visible in the canvas
       this.birds = this.birds.filter((bird) => {
@@ -46,21 +44,45 @@ class Game {
         // console.log("iscolliding");
         // Restarting the position of the player to a set position
         this.player.resetToStartPosition();
-        
+
         // Substracting lifes from an ice climber
         this.player.lifes--;
+
         // When the value is less than 1, its game over for the lad
         if (this.player.lifes < 1) {
-          this.player.lifes = ["You lost your life, start again"];
-        // Now you can substract from a string a life, so this is how we trick it  
+          this.player.lifes = ["Climbing is over, start again"];
+          // Now you can substract from a string a life, so this is how we trick it
         } else if ((this.player.lifes = "NaN")) {
           this.player.lifes = 1;
         }
+
+        //Adding deaths to the iceclimber to see how many times it lost
+        this.player.deaths++;
+       
       }
     });
-    // If the player reaches the value
-    if (this.player.top < 545) {
+    // If the player reaches almost the floor it is reminded that it can start again and then a life is added back to the player
+    if (this.player.top < 530) {
       this.player.lifes = 1;
+    }
+
+    // If the player reaches the top a new span appears, saying to the player that he has won the game after dying x amounts of times
+    if (this.player.top < -50) {
+      if (this.player.deaths <= 0) {
+        this.player.won = ["Thats icy, you made it on your first go"];
+      }
+      if (this.player.deaths <= 1) {
+        this.player.won =
+          ["You made it brother, the death of "] +
+          this.player.deaths +
+          [" ice climber was not in vain"];
+      }
+      if (this.player.deaths > 1) {
+        this.player.won =
+          ["You made it brother, the death of "] +
+          this.player.deaths +
+          [" ice climbers was not in vain"];
+      }
     }
   }
 

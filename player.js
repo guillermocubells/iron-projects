@@ -1,16 +1,19 @@
 class Player {
   // Positioning the player in the canvas and creating a floor
   // Asigning it the top and left values that will be passed in the game
-  constructor(top, left, span) {
+  constructor(top, left, span1, span2, span3) {
     this.top = top;
     this.left = left;
     this.width = 50;
     this.height = 60;
     // this.velocity = 0;
-    this.floor = 600;
+    // this.floor = 600;
     this.lifes = 1;
     this.deaths = 0;
-    this.span = span;
+    this.won = "";
+    this.span1 = span1;
+    this.span2 = span2;
+    this.span3 = span3;
   }
   // Preloading the image of the player
   preload() {
@@ -19,7 +22,9 @@ class Player {
   // Drawing the player in the given position
   drawPlayer() {
     push();
-    this.span.innerText = this.lifes;
+    this.span1.innerText = this.lifes;
+    this.span2.innerText = this.deaths;
+    this.span3.innerText = this.won;
     image(this.img, this.left, this.top, this.width, this.height);
     pop();
   }
