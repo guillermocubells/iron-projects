@@ -90,25 +90,25 @@ class Game {
     // Locating the position of the player botton vs the bird top
     // The player bottom has to be bigger than the top of the bird, otherwise they would be colliding
     const bottomOfPlayer = player.top + player.height;
-    const topOfBird = birds.top + 25;
+    const topOfBird = birds.top + 15;
     const isBottomOfPlayerBiggerThenTopOfBird = bottomOfPlayer > topOfBird;
 
     // Locating the position of the player top vs the bird bottom.
     // The player top has to be smaller otherwise it would be colliding with the bottom of the bird
     const topOfPlayer = player.top;
-    const bottomOfBird = birds.height + birds.top - 35;
+    const bottomOfBird = birds.height + birds.top - 25;
     const isTopOfPlayerSmallerThanBottomOfBird = topOfPlayer <= bottomOfBird;
 
     // Locating the position of the player left vs the right of the bird
     // The player left has to be smaller or equal than the right of the bird
     const leftOfPlayer = player.left;
-    const rightOfBird = birds.left + birds.width - 30;
+    const rightOfBird = birds.left + birds.width - 20;
     const isLeftOfPlayerSmallerThanRightOfBird = leftOfPlayer <= rightOfBird;
 
     // Locating the position of the player right and the bird left
     // The player right has to be bigger or equal than the left of the bird
     const rightOfPlayer = player.width + player.left;
-    const leftOfBird = birds.left + 30;
+    const leftOfBird = birds.left + 20;
     const isRightOfPlayerBiggerThanLeftOfBird = rightOfPlayer >= leftOfBird;
 
     // returns the constants in a boolean way

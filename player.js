@@ -6,8 +6,8 @@ class Player {
     this.left = left;
     this.width = 50;
     this.height = 60;
-    // this.velocity = 0;
-    // this.floor = 600;
+    this.velocity = 0;
+    this.floor = 540;
     this.lifes = 1;
     this.deaths = 0;
     this.won = "";
@@ -22,6 +22,8 @@ class Player {
   // Drawing the player in the given position
   drawPlayer() {
     push();
+    // this.velocity += GRAVITY;
+    // this.top += this.velocity;
     this.span1.innerText = this.lifes;
     this.span2.innerText = this.deaths;
     this.span3.innerText = this.won;
@@ -58,7 +60,16 @@ class Player {
     }
   }
 
+  hasReachedTheGround() {
+    return this.top >= this.floor;
+  }
+
   resetToStartPosition() {
+    // if (this.hasReachedTheGround()) {
+    //   this.top = this.floor;
+    //   this.velocity = 0;
+    //   this.left = 75;
+    // }
     this.top = 545;
     this.left = 75;
   }

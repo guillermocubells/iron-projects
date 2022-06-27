@@ -27,7 +27,7 @@ class Birds {
     if (frameCount % 2 === 0) {
       this.top -= 2;
     } else {
-      this.top += 2;
+      this.top += 4;
     }
   }
 }
