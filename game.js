@@ -58,7 +58,6 @@ class Game {
 
         //Adding deaths to the iceclimber to see how many times it lost
         this.player.deaths++;
-       
       }
     });
     // If the player reaches almost the floor it is reminded that it can start again and then a life is added back to the player
@@ -71,7 +70,7 @@ class Game {
       if (this.player.deaths <= 0) {
         this.player.won = ["Thats icy, you made it on your first go"];
       }
-      if (this.player.deaths <= 1) {
+      if (this.player.deaths > 0) {
         this.player.won =
           ["You made it brother, the death of "] +
           this.player.deaths +

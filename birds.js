@@ -8,8 +8,6 @@ class Birds {
     this.img = img;
   }
 
-  preload() {}
-
   drawBird() {
     push();
     image(
@@ -27,7 +25,7 @@ class Birds {
     if (frameCount % 2 === 0) {
       this.top -= 2;
     } else {
-      this.top += 4;
+      this.top +=2;
     }
   }
 }

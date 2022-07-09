@@ -6,7 +6,6 @@ class Player {
     this.left = left;
     this.width = 50;
     this.height = 60;
-    this.velocity = 0;
     this.floor = 540;
     this.lifes = 1;
     this.deaths = 0;
@@ -22,8 +21,6 @@ class Player {
   // Drawing the player in the given position
   drawPlayer() {
     push();
-    // this.velocity += GRAVITY;
-    // this.top += this.velocity;
     this.span1.innerText = this.lifes;
     this.span2.innerText = this.deaths;
     this.span3.innerText = this.won;
